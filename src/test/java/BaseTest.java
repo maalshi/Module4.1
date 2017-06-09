@@ -18,7 +18,6 @@ public class BaseTest {
 
     @AfterMethod
     public void closeDriver(){
-        driver.close();
         driver.quit();
     }
 

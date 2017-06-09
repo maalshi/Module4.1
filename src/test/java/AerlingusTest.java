@@ -1,3 +1,4 @@
+import PageObject.FlightResultsPage;
 import PageObject.Homepage;
 import org.testng.annotations.Test;
 
@@ -8,16 +9,20 @@ public class AerlingusTest extends BaseTest {
 
     @Test
     public void verifyAerl() throws InterruptedException {
-        driver.get("https://www.aerlingus.com/html/en-US/home.html");
-        Thread.sleep(5000);
+        driver.get("https://www-devb1.aerlingus.com/html/en-US/home.html");
         Homepage homepage = new Homepage(driver);
         homepage.clickOrigin();
-        Thread.sleep(5000);
         homepage.sendKeysOrigin();
         homepage.clickOriginSuggestion();
         homepage.clickDestination();
         homepage.sendKeysDestination();
         homepage.clickDestinationSuggestion();
+        homepage.clickFindFlightButton();
+
+
+
+        FlightResultsPage flightresults = new FlightResultsPage();
+        flightresults.clickContinue();
     }
 
 
