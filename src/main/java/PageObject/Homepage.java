@@ -17,7 +17,7 @@ public class Homepage {
     By origin = By.xpath("//*[@id='origin']/div");
     By suggestion = By.xpath("//li[contains(@id,'typeahead')]");
     By destination = By.xpath("//*[@id='dest']/div");
-    By findFlightButton = By.xpath("//*[@id='homepage_search']");
+    By findFlightButton = By.xpath("//button[@data-test-id='test_booker_search']");
 
 
 
@@ -56,6 +56,7 @@ public class Homepage {
     }
 
     public void clickFindFlightButton(){
+        wait.until(ExpectedConditions.elementToBeClickable(findFlightButton));
         driver.findElement(findFlightButton).click();
 
     }

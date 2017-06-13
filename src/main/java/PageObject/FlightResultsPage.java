@@ -12,8 +12,12 @@ public class FlightResultsPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    By continueButton = By.xpath("//html/body/div[3]/div/div[4]/div[2]/div[2]/div/div[2]/div[6]/div[1]/div/button[2]");
+    By continueButton = By.cssSelector(".v-align-child.l2.button.button-standard.button-shamrockGreen-gradient.padding-left-xlrg.padding-right-xlrg.float-right.padding-top-xs.padding-bottom-xs");
 
+    public FlightResultsPage(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(driver, 10);
+    }
     public void clickContinue(){
         wait.until(ExpectedConditions.elementToBeClickable(continueButton));
         driver.findElement(continueButton).click();
