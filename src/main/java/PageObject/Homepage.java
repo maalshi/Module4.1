@@ -19,6 +19,8 @@ public class Homepage {
     By destination = By.xpath("//*[@id='dest']/div");
     By findFlightButton = By.xpath("//button[@data-test-id='test_booker_search']");
 
+    By tabHotel = By.id("partner-tab-1");
+
 
 
     public Homepage(WebDriver driver) {
@@ -35,8 +37,8 @@ public class Homepage {
         driver.findElement(origin).clear();
     }
 
-    public void sendKeysOrigin(){
-        driver.findElement(origin).sendKeys("dublin");
+    public void sendKeysOrigin(String originCity){
+        driver.findElement(origin).sendKeys(originCity);
     }
 
     public void clickOriginSuggestion(){
@@ -47,8 +49,8 @@ public class Homepage {
         driver.findElement(destination).click();
     }
 
-    public void sendKeysDestination(){
-        driver.findElement(destination).sendKeys("paris");
+    public void sendKeysDestination(String destinationCity){
+        driver.findElement(destination).sendKeys(destinationCity);
     }
 
     public void clickDestinationSuggestion(){
@@ -58,6 +60,12 @@ public class Homepage {
     public void clickFindFlightButton(){
         wait.until(ExpectedConditions.elementToBeClickable(findFlightButton));
         driver.findElement(findFlightButton).click();
+
+    }
+
+    public void clickTabHotel(){
+        wait.until(ExpectedConditions.elementToBeClickable(tabHotel));
+        driver.findElement(tabHotel).click();
 
     }
 

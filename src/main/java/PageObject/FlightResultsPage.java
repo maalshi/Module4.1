@@ -12,11 +12,11 @@ public class FlightResultsPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    By continueButton = By.cssSelector(".v-align-child.l2.button.button-standard.button-shamrockGreen-gradient.padding-left-xlrg.padding-right-xlrg.float-right.padding-top-xs.padding-bottom-xs");
+    By continueButton = By.xpath("//button[@data-test-id='test_continue_btn']");
 
     public FlightResultsPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 20);
     }
     public void clickContinue(){
         wait.until(ExpectedConditions.elementToBeClickable(continueButton));

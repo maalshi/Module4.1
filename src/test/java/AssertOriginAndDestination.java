@@ -2,6 +2,7 @@ import PageObject.FlightResultsPage;
 import PageObject.Homepage;
 import PageObject.PassengerEssentialsPage;
 import PageObject.PaxInfoPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -10,35 +11,38 @@ import org.testng.annotations.Test;
 public class AssertOriginAndDestination extends BaseTest {
 
     @Test
-    public void verifyAerl() throws InterruptedException {
-        driver.get("https://www-devb1.aerlingus.com/html/en-US/home.html");
+       public void search(){
+        driver.get("https://www.aerlingus.com/html/en-US/home.html");
         Homepage homepage = new Homepage(driver);
         homepage.clickOrigin();
-        homepage.sendKeysOrigin();
+        homepage.sendKeysOrigin("dublin");
         homepage.clickOriginSuggestion();
         homepage.clickDestination();
-        homepage.sendKeysDestination();
+        homepage.sendKeysDestination("paris");
         homepage.clickDestinationSuggestion();
         homepage.clickFindFlightButton();
 
 
-
-
         FlightResultsPage flightresults = new FlightResultsPage(driver);
         flightresults.clickContinue();
+    }
 
-
+    @Test(dependsOnMethods = { "search" }, alwaysRun = true)
+    public void passengerInfo(){
         PaxInfoPage pax = new PaxInfoPage(driver);
-        pax.clickTitle();
+        //  pax.clickTitle();
         pax.clickTitleMr();
-        pax.sendKeysFirstName();
-        pax.sendKeysFamilyName();
-        pax.sendKeysEmail();
-        pax.sendKeysConfirmEmail();
-        pax.sendKeysAreaCode();
-        pax.sendKeysLocalNumber();
+        pax.sendKeysFirstName("John");
+        pax.sendKeysFamilyName("Blare");
+        pax.sendKeysEmail("maalshi@mail.ru");
+        pax.sendKeysConfirmEmail("maalshi@mail.ru");
+        pax.sendKeysAreaCode("34");
+        pax.sendKeysLocalNumber("3434");
+        pax.clickContinue();
 
         PassengerEssentialsPage essentials = new PassengerEssentialsPage(driver);
+        essentials.assertOutboundFlight();
+        essentials.assertInboundFlight();
 
 
     }

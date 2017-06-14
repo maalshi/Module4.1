@@ -21,6 +21,7 @@ public class PaxInfoPage {
     By confirmEmail = By.xpath("//*[@id='test_confirmemail-6']");
     By areaCode = By.xpath("//*[@id='test_acode-4']");
     By localNumber = By.xpath("//*[@id='test_mobnumber-5']");
+    By continueButton = By.id("test_continueTravelEsstl");
 
     public PaxInfoPage(WebDriver driver) {
         this.driver = driver;
@@ -37,31 +38,34 @@ public class PaxInfoPage {
         driver.findElement(titleMr).click();
     }
 
-    public void sendKeysFirstName(){
-        driver.findElement(firstName).sendKeys("John");
+    public void sendKeysFirstName(String name){
+        driver.findElement(firstName).sendKeys(name);
     }
 
-    public void sendKeysFamilyName(){
-        driver.findElement(familyName).sendKeys("Blare");
+    public void sendKeysFamilyName(String surname){
+        driver.findElement(familyName).sendKeys(surname);
     }
 
-    public void sendKeysEmail(){
-        driver.findElement(email).sendKeys("maalshi@mail.ru");
+    public void sendKeysEmail(String emailAddress){
+        driver.findElement(email).sendKeys(emailAddress);
     }
 
-    public void sendKeysConfirmEmail(){
-        driver.findElement(confirmEmail).sendKeys("maalshi@mail.ru");
+    public void sendKeysConfirmEmail(String confirmEmailAddress){
+        driver.findElement(confirmEmail).sendKeys(confirmEmailAddress);
     }
 
-    public void sendKeysAreaCode(){
-        driver.findElement(areaCode).sendKeys("34");
+    public void sendKeysAreaCode(String area){
+        driver.findElement(areaCode).sendKeys(area);
     }
 
-    public void sendKeysLocalNumber(){
-        driver.findElement(localNumber).sendKeys("343434");
+    public void sendKeysLocalNumber(String local){
+        driver.findElement(localNumber).sendKeys(local);
     }
 
-
+    public void clickContinue(){
+        wait.until(ExpectedConditions.elementToBeClickable(continueButton));
+        driver.findElement(continueButton).click();
+    }
 
 
 
