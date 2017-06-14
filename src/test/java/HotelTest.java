@@ -1,6 +1,6 @@
-import PageObject.Homepage;
-import PageObject.HotelObject;
-import org.testng.annotations.AfterClass;
+import PageObject.HotelPages.HotelObject;
+import PageObject.HotelPages.HotelPage;
+import PageObject.HotelPages.PlanPage;
 import org.testng.annotations.Test;
 
 /**
@@ -12,17 +12,20 @@ public class HotelTest extends BaseTest {
 
             public void verifyHotels() {
         driver.get("https://www.aerlingus.com/html/en-US/home.html");
-        HotelObject hotel = new HotelObject(driver);
-        hotel.clickTabHotel();
+        HotelObject hotelObject = new HotelObject(driver);
+        hotelObject.clickTabHotel();
         String winHandleBefore = driver.getWindowHandle();
-        hotel.clickButtonViewHotels();
+        hotelObject.clickButtonViewHotels();
         for(String winHandle : driver.getWindowHandles()){
             if(!winHandle.equals(winHandleBefore)) {
                 driver.switchTo().window(winHandle);
             }
         }
-        hotel.clickButtonSearchFlights();
-        hotel.assertTextBookFlights();
+        HotelPage hotelPage = new HotelPage(driver);
+        hotelPage.clickButtonSearchFlights();
+
+        PlanPage planPage = new PlanPage(driver);
+        planPage.assertTextBookFlights();
 
 
     }

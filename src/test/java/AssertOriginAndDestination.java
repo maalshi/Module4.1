@@ -1,8 +1,7 @@
-import PageObject.FlightResultsPage;
+import PageObject.AerlPages.FlightResultsPage;
 import PageObject.Homepage;
-import PageObject.PassengerEssentialsPage;
-import PageObject.PaxInfoPage;
-import org.testng.Assert;
+import PageObject.AerlPages.PassengerEssentialsPage;
+import PageObject.AerlPages.PaxInfoPage;
 import org.testng.annotations.Test;
 
 /**
@@ -28,7 +27,7 @@ public class AssertOriginAndDestination extends BaseTest {
     }
 
     @Test(dependsOnMethods = { "search" }, alwaysRun = true)
-    public void passengerInfo(){
+    public void passengerInfo() {
         PaxInfoPage pax = new PaxInfoPage(driver);
         //  pax.clickTitle();
         pax.clickTitleMr();
@@ -40,6 +39,9 @@ public class AssertOriginAndDestination extends BaseTest {
         pax.sendKeysLocalNumber("3434");
         pax.clickContinue();
 
+    }
+    @Test (dependsOnMethods = { "search", "passengerInfo" }, alwaysRun = true)
+            public void assertEssentials(){
         PassengerEssentialsPage essentials = new PassengerEssentialsPage(driver);
         essentials.assertOutboundFlight();
         essentials.assertInboundFlight();

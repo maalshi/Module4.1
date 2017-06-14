@@ -1,4 +1,4 @@
-package PageObject;
+package PageObject.AerlPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,10 +28,10 @@ public class PaxInfoPage {
         wait = new WebDriverWait(driver, 10);
     }
 
-    public void clickTitle(){
-        wait.until(ExpectedConditions.elementToBeClickable(title));
-        driver.findElement(title).click();
-    }
+ //   public void clickTitle(){
+  //      wait.until(ExpectedConditions.elementToBeClickable(title));
+  //      driver.findElement(title).click();
+  //  }
 
     public void clickTitleMr(){
         wait.until(ExpectedConditions.elementToBeClickable(titleMr));

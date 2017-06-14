@@ -1,4 +1,4 @@
-package PageObject;
+package PageObject.HotelPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,8 +16,8 @@ public class HotelObject {
 
     By tabHotel = By.xpath("//*[contains(@id,'partner-tab') and contains(.,'HOTELS')]");
     By buttonViewHotels = By.id("hotel-link-1");
-    By buttonSearchFlights = By.id("green-search-dates-flights_IE-EUR");
-    By textBookFlights = By.xpath("//div[contains(@class,'page-header')]//h2/b");//By.className("h2-lrg centered ng-binding");
+
+
 
     public HotelObject(WebDriver driver) {
         this.driver = driver;
@@ -37,15 +37,7 @@ public class HotelObject {
 
     }
 
-    public void clickButtonSearchFlights(){
-        wait.until(ExpectedConditions.elementToBeClickable(buttonSearchFlights));
-        driver.findElement(buttonSearchFlights).click();
 
-    }
 
-    public void assertTextBookFlights(){
-        wait.until(ExpectedConditions.presenceOfElementLocated(textBookFlights));
-        Assert.assertEquals("Flights", driver.findElement(textBookFlights).getText());
 
-    }
 }
