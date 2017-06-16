@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Maryia_Shynkarenka on 6/6/2017.
  */
-public class AssertOriginAndDestination extends BaseTest {
+public class FlightTest extends BaseTest {
 
     @Test
        public void search(){
@@ -23,6 +23,7 @@ public class AssertOriginAndDestination extends BaseTest {
 
 
         FlightResultsPage flightresults = new FlightResultsPage(driver);
+        //asserts
         flightresults.clickContinue();
     }
 
@@ -43,8 +44,8 @@ public class AssertOriginAndDestination extends BaseTest {
     @Test (dependsOnMethods = { "search", "passengerInfo" }, alwaysRun = true)
             public void assertEssentials(){
         PassengerEssentialsPage essentials = new PassengerEssentialsPage(driver);
-        essentials.assertOutboundFlight();
-        essentials.assertInboundFlight();
+        essentials.assertOutboundFlight("DUBLIN to PARIS/CDG");
+        essentials.assertInboundFlight("PARIS/CDG to DUBLIN");
 
 
     }

@@ -23,13 +23,13 @@ public class PassengerEssentialsPage {
         wait = new WebDriverWait(driver, 20);
     }
 
-    public void assertOutboundFlight(){
+    public void assertOutboundFlight(String outbound){
         wait.until(ExpectedConditions.elementToBeClickable(OutboundFlight));
-        Assert.assertEquals("DUBLIN to PARIS/CDG", driver.findElement(OutboundFlight).getText());
+        Assert.assertEquals(outbound, driver.findElement(OutboundFlight).getText());
     }
 
-    public void assertInboundFlight(){
+    public void assertInboundFlight(String inbound){
         wait.until(ExpectedConditions.elementToBeClickable(InboundFlight));
-        Assert.assertEquals("PARIS/CDG to DUBLIN", driver.findElement(InboundFlight).getText());
+        Assert.assertEquals(inbound, driver.findElement(InboundFlight).getText());
     }
 }

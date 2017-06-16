@@ -19,7 +19,9 @@ public class Homepage {
     By destination = By.xpath("//*[@id='dest']/div");
     By findFlightButton = By.xpath("//button[@data-test-id='test_booker_search']");
 
-    By tabHotel = By.id("partner-tab-1");
+
+    By tabHotel = By.xpath("//*[contains(@id,'partner-tab') and contains(.,'HOTELS')]");
+    By buttonViewHotels = By.id("hotel-link-1");
 
 
 
@@ -63,12 +65,18 @@ public class Homepage {
 
     }
 
+
     public void clickTabHotel(){
         wait.until(ExpectedConditions.elementToBeClickable(tabHotel));
         driver.findElement(tabHotel).click();
 
     }
 
+    public void clickButtonViewHotels(){
+        wait.until(ExpectedConditions.elementToBeClickable(buttonViewHotels));
+        driver.findElement(buttonViewHotels).click();
+
+    }
 
 
 

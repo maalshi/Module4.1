@@ -14,7 +14,7 @@ public class PlanPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    By textBookFlights = By.xpath("//div[contains(@class,'page-header')]//h2/b");//By.className("h2-lrg centered ng-binding");
+    By textBookFlights = By.xpath("//div[contains(@class,'page-header')]//h2");//By.className("h2-lrg centered ng-binding");
 
     public PlanPage(WebDriver driver) {
         this.driver = driver;
@@ -22,8 +22,8 @@ public class PlanPage {
     }
 
     public void assertTextBookFlights(){
-        wait.until(ExpectedConditions.presenceOfElementLocated(textBookFlights));
-        Assert.assertEquals("Flights", driver.findElement(textBookFlights).getText());
+        wait.until(ExpectedConditions.elementToBeClickable(textBookFlights));
+        Assert.assertEquals("Book Flights", driver.findElement(textBookFlights).getText());
 
     }
 

@@ -2,6 +2,8 @@ package PageObject.AerlPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,7 +14,8 @@ public class FlightResultsPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    By continueButton = By.xpath("//button[@data-test-id='test_continue_btn']");
+    @FindBy(xpath = "//button[@data-test-id='test_continue_btn']")
+    WebElement continueButton;
 
     public FlightResultsPage(WebDriver driver) {
         this.driver = driver;
@@ -20,6 +23,6 @@ public class FlightResultsPage {
     }
     public void clickContinue(){
         wait.until(ExpectedConditions.elementToBeClickable(continueButton));
-        driver.findElement(continueButton).click();
+        continueButton.click();
     }
 }
