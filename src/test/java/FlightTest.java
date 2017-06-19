@@ -23,14 +23,14 @@ public class FlightTest extends BaseTest {
 
 
         FlightResultsPage flightresults = new FlightResultsPage(driver);
-        //asserts
+        flightresults.assertOutboundFlight();
+        flightresults.assertInboundFlight();
         flightresults.clickContinue();
     }
 
     @Test(dependsOnMethods = { "search" }, alwaysRun = true)
     public void passengerInfo() {
         PaxInfoPage pax = new PaxInfoPage(driver);
-        //  pax.clickTitle();
         pax.clickTitleMr();
         pax.sendKeysFirstName("John");
         pax.sendKeysFamilyName("Blare");

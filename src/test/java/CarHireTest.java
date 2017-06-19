@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class CarHireTest extends BaseTest {
 
     @Test
-    public void searchCarHire(){
+    public void findCarHire(){
         driver.get("https://www.aerlingus.com/html/en-US/home.html");
         Homepage homepage = new Homepage(driver);
         homepage.clickTabCarHire();
@@ -20,6 +20,9 @@ public class CarHireTest extends BaseTest {
                 driver.switchTo().window(winHandle);
             }
         }
+
+
+    public void searchCarHire() {
         CarHireSearch search = new CarHireSearch(driver);
         search.sendKeysPickUpLocation("dublin");
         search.clickSuggestion();
@@ -27,15 +30,20 @@ public class CarHireTest extends BaseTest {
         search.clickOutboiundDate();
         search.clickEndDate();
         search.clickInboundDate();
-        search.clickSearchButton();
 
-        for(String winHandle : driver.getWindowHandles()){
-            if(!winHandle.equals(winHandleBefore)) {
+        search.clickSearchButton();
+    }
+
+    public void assertResultsCarHire() {
+        for (String winHandle : driver.getWindowHandles()) {
+            if (!winHandle.equals(winHandleBefore)) {
                 driver.switchTo().window(winHandle);
             }
+
         }
         CarHireResults results = new CarHireResults(driver);
         results.assertOutboundAirport("Dublin - Airport");
         results.assertInboundAirport("Dublin - Airport");
     }
 }
+

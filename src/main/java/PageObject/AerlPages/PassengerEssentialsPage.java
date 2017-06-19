@@ -2,6 +2,8 @@ package PageObject.AerlPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -13,8 +15,13 @@ public class PassengerEssentialsPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    By OutboundFlight = By.xpath("//div[@id='test-left']//div[@class='relative ng-scope'][1]//div[contains(@class,'head-section')]//span[@class='ng-binding']");
-    By InboundFlight = By.xpath("//div[@id='test-left']//div[@class='relative ng-scope'][2]//div[contains(@class,'head-section')]//span[@class='ng-binding']");
+
+    @FindBy(xpath = "//div[@id='test-left']//div[@class='relative ng-scope'][1]//div[contains(@class,'head-section')]//span[@class='ng-binding']")
+    WebElement OutboundFlight;
+
+
+    @FindBy(xpath = "//div[@id='test-left']//div[@class='relative ng-scope'][2]//div[contains(@class,'head-section')]//span[@class='ng-binding']")
+    WebElement InboundFlight;
 
 
 
@@ -25,11 +32,11 @@ public class PassengerEssentialsPage {
 
     public void assertOutboundFlight(String outbound){
         wait.until(ExpectedConditions.elementToBeClickable(OutboundFlight));
-        Assert.assertEquals(outbound, driver.findElement(OutboundFlight).getText());
+        Assert.assertEquals(outbound, OutboundFlight.getText());
     }
 
     public void assertInboundFlight(String inbound){
         wait.until(ExpectedConditions.elementToBeClickable(InboundFlight));
-        Assert.assertEquals(inbound, driver.findElement(InboundFlight).getText());
+        Assert.assertEquals(inbound, InboundFlight.getText());
     }
 }
