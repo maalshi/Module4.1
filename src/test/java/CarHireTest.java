@@ -35,7 +35,7 @@ public class CarHireTest extends BaseTest {
             }
         }
         CarHireResults results = new CarHireResults(driver);
-        results.assertOutboundAirport("Dublin-Airport");
-        results.assertInboundAirport("Dublin-Airport");
+        results.assertOutboundAirport("Dublin - Airport");
+        results.assertInboundAirport("Dublin - Airport");
     }
 }
