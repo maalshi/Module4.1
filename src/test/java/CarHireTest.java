@@ -9,20 +9,21 @@ import org.testng.annotations.Test;
 public class CarHireTest extends BaseTest {
 
     @Test
-    public void findCarHire(){
+    public void findCarHire() {
         driver.get("https://www.aerlingus.com/html/en-US/home.html");
         Homepage homepage = new Homepage(driver);
         homepage.clickTabCarHire();
         String winHandleBefore = driver.getWindowHandle();
         homepage.clickButtonMoreInfo();
-        for(String winHandle : driver.getWindowHandles()){
-            if(!winHandle.equals(winHandleBefore)) {
+        for (String winHandle : driver.getWindowHandles()) {
+            if (!winHandle.equals(winHandleBefore)) {
                 driver.switchTo().window(winHandle);
             }
         }
+    }
 
-
-    public void searchCarHire() {
+    @Test(dependsOnMethods = {"findCarHire"}, alwaysRun = true)
+    public void searchCarHire () {
         CarHireSearch search = new CarHireSearch(driver);
         search.sendKeysPickUpLocation("dublin");
         search.clickSuggestion();
@@ -32,18 +33,20 @@ public class CarHireTest extends BaseTest {
         search.clickInboundDate();
 
         search.clickSearchButton();
-    }
-
-    public void assertResultsCarHire() {
         for (String winHandle : driver.getWindowHandles()) {
             if (!winHandle.equals(winHandleBefore)) {
                 driver.switchTo().window(winHandle);
             }
 
         }
+    }
+
+    @Test(dependsOnMethods = {"searchCarHire"}, alwaysRun = true)
+    public void assertResultsCarHire () {
         CarHireResults results = new CarHireResults(driver);
         results.assertOutboundAirport("Dublin - Airport");
         results.assertInboundAirport("Dublin - Airport");
     }
 }
+
 
