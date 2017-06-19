@@ -23,6 +23,9 @@ public class Homepage {
     By tabHotel = By.xpath("//*[contains(@id,'partner-tab') and contains(.,'HOTELS')]");
     By buttonViewHotels = By.id("hotel-link-1");
 
+    By tabCarHire = By.xpath("//*[contains(@id,'partner-tab') and contains(.,'CAR')]");
+    By buttonMoreInfo = By.id("car-rental-link-1");
+
 
 
     public Homepage(WebDriver driver) {
@@ -79,5 +82,16 @@ public class Homepage {
     }
 
 
+    public void clickTabCarHire(){
+        wait.until(ExpectedConditions.elementToBeClickable(tabCarHire));
+        driver.findElement(tabCarHire).click();
+
+    }
+
+    public void clickButtonMoreInfo(){
+        wait.until(ExpectedConditions.elementToBeClickable(buttonMoreInfo));
+        driver.findElement(buttonMoreInfo).click();
+
+    }
 
 }
