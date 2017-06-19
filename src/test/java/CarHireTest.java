@@ -29,6 +29,11 @@ public class CarHireTest extends BaseTest {
         search.clickInboundDate();
         search.clickSearchButton();
 
+        for(String winHandle : driver.getWindowHandles()){
+            if(!winHandle.equals(winHandleBefore)) {
+                driver.switchTo().window(winHandle);
+            }
+        }
         CarHireResults results = new CarHireResults(driver);
         results.assertOutboundAirport("Dublin-Airport");
         results.assertInboundAirport("Dublin-Airport");
