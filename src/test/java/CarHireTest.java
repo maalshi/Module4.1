@@ -26,19 +26,14 @@ public class CarHireTest extends BaseTest {
     public void searchCarHire () {
         CarHireSearch search = new CarHireSearch(driver);
         search.sendKeysPickUpLocation("dublin");
+        String winHandleBefore = driver.getWindowHandle();
         search.clickSuggestion();
         search.clickStartDate();
         search.clickOutboiundDate();
         search.clickEndDate();
         search.clickInboundDate();
-
         search.clickSearchButton();
-        for (String winHandle : driver.getWindowHandles()) {
-            if (!winHandle.equals(winHandleBefore)) {
-                driver.switchTo().window(winHandle);
-            }
 
-        }
     }
 
     @Test(dependsOnMethods = {"searchCarHire"}, alwaysRun = true)

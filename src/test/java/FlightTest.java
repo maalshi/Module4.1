@@ -24,7 +24,7 @@ public class FlightTest extends BaseTest {
 
         FlightResultsPage flightresults = new FlightResultsPage(driver);
         flightresults.assertOutboundFlight();
-        flightresults.assertInboundFlight();
+      flightresults.assertInboundFlight();
         flightresults.clickContinue();
     }
 
